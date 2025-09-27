@@ -5,28 +5,27 @@ This repository contains two Simulink models that simulate **vehicle dynamics, o
 - **Metro Line 4 (M4, Milan)** — driverless metro train, including energy/adhesion and lateral dynamics on curved track.
 
 The work includes **kinematic & dynamic blocks**, **resistances**, **braking logic**, **pathway information lookup**, and (for the bus) a **series HEV thermostat control strategy (TCS)** with battery model. For the metro, the model adds **track cant & speed limits**, **adhesion checks**, and **lateral dynamics** (non-compensated acceleration, roll angle, lateral displacement).  
-Source: our course project report and slides.  [1](https://gruppofsitaliane-my.sharepoint.com/personal/961941_rfi_it/Documents/File%20chat%20di%20Microsoft%20Copilot/RelazioneDinamica.pdf)[2](https://gruppofsitaliane-my.sharepoint.com/personal/961941_rfi_it/_layouts/15/Doc.aspx?sourcedoc=%7BECE6DB18-6D04-4DEC-8EC3-73431546F84B%7D&file=TeamH_FLAGA1A2.pptx&action=edit&mobileredirect=true)
+Source: our course project report and slides.
 
 ---
 
 ## Key features
 
 ### Bus Line 73 (Duomo–Linate)
-- **Route**: ~7.24 km, **19 stops**, **17 curves** (curvature via clothoids), slope ~0 (Δalt < 10 m).  [1](https://gruppofsitaliane-my.sharepoint.com/personal/961941_rfi_it/Documents/File%20chat%20di%20Microsoft%20Copilot/RelazioneDinamica.pdf)  
-- **Series hybrid**: diesel ICE → generator (≈200–210 kW) + **160 kW** traction motor, **11 kWh** Li‑ion battery; TCS keeps ICE at constant operating point between SOC bounds.  [1](https://gruppofsitaliane-my.sharepoint.com/personal/961941_rfi_it/Documents/File%20chat%20di%20Microsoft%20Copilot/RelazioneDinamica.pdf)  
-- **Dynamic model**: selects tractive effort as min of **motor limit / comfort / adhesion**; computes **Pel, Eel**, and operation modes (traction, free-running, braking, stop).  [1](https://gruppofsitaliane-my.sharepoint.com/personal/961941_rfi_it/Documents/File%20chat%20di%20Microsoft%20Copilot/RelazioneDinamica.pdf)  
-- **Kinematic block**: integrates **a → v → s**, dwell times at stops (e.g., 10–15 s).  [1](https://gruppofsitaliane-my.sharepoint.com/personal/961941_rfi_it/Documents/File%20chat%20di%20Microsoft%20Copilot/RelazioneDinamica.pdf)  
-- **Resistances**: aerodynamic (`ρ, Cd, A`) + rolling friction (**fv ≈ 0.014**).  [1](https://gruppofsitaliane-my.sharepoint.com/personal/961941_rfi_it/Documents/File%20chat%20di%20Microsoft%20Copilot/RelazioneDinamica.pdf)  
-- **Battery & SOC**: current from power balance (gen + motor + auxiliaries), SOC via coulomb counting; **regen ~30%** of mech. braking.  [1](https://gruppofsitaliane-my.sharepoint.com/personal/961941_rfi_it/Documents/File%20chat%20di%20Microsoft%20Copilot/RelazioneDinamica.pdf)  
-- *(Optional)* **Vibrations & comfort (ISO 2631)**: quarter-car model, Fourier road profile, weighted perception metrics.  [1](https://gruppofsitaliane-my.sharepoint.com/personal/961941_rfi_it/Documents/File%20chat%20di%20Microsoft%20Copilot/RelazioneDinamica.pdf)
+- **Route**: ~7.24 km, **19 stops**, **17 curves** (curvature via clothoids), slope ~0 (Δalt < 10 m).
+- **Series hybrid**: diesel ICE → generator (≈200–210 kW) + **160 kW** traction motor, **11 kWh** Li‑ion battery; TCS keeps ICE at constant operating point between SOC bounds. 
+- **Dynamic model**: selects tractive effort as min of **motor limit / comfort / adhesion**; computes **Pel, Eel**, and operation modes (traction, free-running, braking, stop). 
+- **Kinematic block**: integrates **a → v → s**, dwell times at stops (e.g., 10–15 s).
+- **Resistances**: aerodynamic (`ρ, Cd, A`) + rolling friction (**fv ≈ 0.014**).
+- **Battery & SOC**: current from power balance (gen + motor + auxiliaries), SOC via coulomb counting; **regen ~30%** of mech. braking.
+- *(Optional)* **Vibrations & comfort (ISO 2631)**: quarter-car model, Fourier road profile, weighted perception metrics.
 
 ### Metro M4
-- **Route**: ~14.198 km, **21 stations**, **21 curves**, slope in ±5‰ band; cant up to **160 mm** with linear ramp (3 mm/m) for speed limits.  [1](https://gruppofsitaliane-my.sharepoint.com/personal/961941_rfi_it/Documents/File%20chat%20di%20Microsoft%20Copilot/RelazioneDinamica.pdf)  
-- **Dynamic model**: traction curve and operation modes; **energy** with traction/braking efficiencies and auxiliaries.  [1](https://gruppofsitaliane-my.sharepoint.com/personal/961941_rfi_it/Documents/File%20chat%20di%20Microsoft%20Copilot/RelazioneDinamica.pdf)  
-- **Adhesion**: speed‑dependent adhesion force with adherent mass ratio (motorized vs total wheelsets).  [1](https://gruppofsitaliane-my.sharepoint.com/personal/961941_rfi_it/Documents/File%20chat%20di%20Microsoft%20Copilot/RelazioneDinamica.pdf)  
-- **Resistances**: grade (sinθ), curve (von Rockl), drag (empirical rail formula for low speeds).  [1](https://gruppofsitaliane-my.sharepoint.com/personal/961941_rfi_it/Documents/File%20chat%20di%20Microsoft%20Copilot/RelazioneDinamica.pdf)  
-- **Lateral dynamics**: non-compensated acceleration (cant + curvature), roll angle θ, lateral offset y.  [1](https://gruppofsitaliane-my.sharepoint.com/personal/961941_rfi_it/Documents/File%20chat%20di%20Microsoft%20Copilot/RelazioneDinamica.pdf)
-
+- **Route**: ~14.198 km, **21 stations**, **21 curves**, slope in ±5‰ band; cant up to **160 mm** with linear ramp (3 mm/m) for speed limits.
+- **Dynamic model**: traction curve and operation modes; **energy** with traction/braking efficiencies and auxiliaries.
+- **Adhesion**: speed‑dependent adhesion force with adherent mass ratio (motorized vs total wheelsets).
+- **Resistances**: grade (sinθ), curve (von Rockl), drag (empirical rail formula for low speeds).
+- **Lateral dynamics**: non-compensated acceleration (cant + curvature), roll angle θ, lateral offset y.
 ---
 
 ## Repository layout
