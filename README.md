@@ -28,10 +28,10 @@ Source: our course project report and slides.
 - **Lateral dynamics**: non-compensated acceleration (cant + curvature), roll angle θ, lateral offset y.
 ---
 
-See `/docs/RelazioneDinamica.pdf` for the full technical write-up and diagrams.
+See `Technical Report.pdf` for the full technical write-up and diagrams.
 ---
 
-## 🔧 Requirements
+## Requirements
 
 - **MATLAB R2020a+** with **Simulink**.  
 - No Simscape required; standard Simulink + MATLAB Function blocks are used.  
