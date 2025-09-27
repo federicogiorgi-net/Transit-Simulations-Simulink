@@ -1,4 +1,4 @@
-# Urban Transit Simulations in Simulink — Bus Line 73 (Duomo–Linate) & Metro M4 🚍🚇
+# Urban Transit Simulations in Simulink — Bus Line 73 (Duomo–Linate) & Metro M4
 
 This repository contains two Simulink models that simulate **vehicle dynamics, operations, and energy** for:
 - **Bus Line 73 (Duomo → Linate)** — articulated hybrid-electric bus with series architecture (IVECO Urbanway 18).  
