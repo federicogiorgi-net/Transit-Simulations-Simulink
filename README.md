@@ -28,12 +28,6 @@ Source: our course project report and slides.
 - **Lateral dynamics**: non-compensated acceleration (cant + curvature), roll angle θ, lateral offset y.
 ---
 
-## Repository layout
-
-Transit-Simulations-Simulink/
-├── bus-line-73/        # Simulink model for Line 73 (series HEV, dynamics, kinematics, resistances, brake)
-└── metro-m4/           # Simulink model for M4 (dynamics, energy/adhesion, resistances, lateral dynamics)
-
 See `/docs/RelazioneDinamica.pdf` for the full technical write-up and diagrams.
 ---
 
