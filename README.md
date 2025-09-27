@@ -47,43 +47,12 @@ See `/docs/RelazioneDinamica.pdf` for the full technical write-up and diagrams.
 
 ---
 
-## 📂 Data files (CSV)
-
-Place these under each model’s `data/` folder:
-
-### `bus-line-73/data/`
-- `stops_bus73.csv`: two columns `[stop_id, s_m]` with cumulative distance of each stop (m).
-- `curves_bus73.csv`: columns `[start_m, end_m, radius_m, clothoid_m]` (e.g., clothoid = 10 m).
-### `metro-m4/data/`
-- `stops_m4.csv`: `[station_id, s_m]` (0 … 14198 m).
-- `curves_m4.csv`: `[start_m, end_m, radius_m, clothoid_m]` (e.g., 50 m).
-- `slope_profile.csv`: piecewise slope between stations (±5‰ if not available).
-- `cant_profile.csv`: cant (mm) along track; speed limits computed from `H[mm] = 11.798 * v[km/h]^2 / R[m]` ⇒ `v = 4.68 * sqrt(R)` (capped at 80 km/h).
-
-> You can digitize positions/radii from OpenStreetMap/Overpass Turbo and measure with Google Earth Pro, as done in the report.
-
----
-
 ## How to run
 
 ### GUI
 1. Open MATLAB → Simulink.
-2. Open `bus-line-73/Bus_Line_73.slx` (or `metro-m4/Metro_M4.slx`).
-3. Ensure `data/` CSVs are loaded (via **From Spreadsheet** blocks / init script).
-4. Click **Run**.
-
-### Command line (example)
-```matlab
-% Bus Line 73
-addpath('bus-line-73','bus-line-73/matlab','bus-line-73/data');
-load_bus73_data;              % (optional) script to load stops/curves into workspace
-simOut = sim('bus-line-73/Bus_Line_73.slx','StopTime','1600');
-
-% Metro M4
-addpath('metro-m4','metro-m4/matlab','metro-m4/data');
-load_m4_data;
-simOut = sim('metro-m4/Metro_M4.slx','StopTime','1200');
-```
+2. Open  `URBANWAY.mat` (for bus dynamic sim) or `METRO.mat` (for metro dynamic sym) to load data on the workspace
+4. Click **Run** in Simulink (Setting sim duration 1600 s for bus and 1200 s for metro).
 
 Outputs: scope plots or logged signals for Space/Speed/Acceleration, Tractive & Braking Effort, Resistances (grade/curve/drag), Energy & SOC (bus), Adhesion check, Lateral dynamics (metro); sample figures are in the report.
 
