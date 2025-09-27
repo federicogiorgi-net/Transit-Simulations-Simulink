@@ -34,8 +34,7 @@ Transit-Simulations-Simulink/
 ├── bus-line-73/        # Simulink model for Line 73 (series HEV, dynamics, kinematics, resistances, brake)
 └── metro-m4/           # Simulink model for M4 (dynamics, energy/adhesion, resistances, lateral dynamics)
 
-See `/docs/RelazioneDinamica.pdf` for the full technical write-up and diagrams.  [1](https://gruppofsitaliane-my.sharepoint.com/personal/961941_rfi_it/Documents/File%20chat%20di%20Microsoft%20Copilot/RelazioneDinamica.pdf)
-
+See `/docs/RelazioneDinamica.pdf` for the full technical write-up and diagrams.
 ---
 
 ## 🔧 Requirements
@@ -44,7 +43,7 @@ See `/docs/RelazioneDinamica.pdf` for the full technical write-up and diagrams. 
 - No Simscape required; standard Simulink + MATLAB Function blocks are used.  
 - OS: Windows / macOS / Linux.
 
-*(Optional)* For the comfort/vibrations demo, basic Control/Signal Processing functions are used within MATLAB; no special toolbox dependency is assumed.  [1](https://gruppofsitaliane-my.sharepoint.com/personal/961941_rfi_it/Documents/File%20chat%20di%20Microsoft%20Copilot/RelazioneDinamica.pdf)
+*(Optional)* For the comfort/vibrations demo, basic Control/Signal Processing functions are used within MATLAB; no special toolbox dependency is assumed.
 
 ---
 
@@ -53,16 +52,15 @@ See `/docs/RelazioneDinamica.pdf` for the full technical write-up and diagrams. 
 Place these under each model’s `data/` folder:
 
 ### `bus-line-73/data/`
-- `stops_bus73.csv`: two columns `[stop_id, s_m]` with cumulative distance of each stop (m).  [1](https://gruppofsitaliane-my.sharepoint.com/personal/961941_rfi_it/Documents/File%20chat%20di%20Microsoft%20Copilot/RelazioneDinamica.pdf)  
-- `curves_bus73.csv`: columns `[start_m, end_m, radius_m, clothoid_m]` (e.g., clothoid = 10 m).  [1](https://gruppofsitaliane-my.sharepoint.com/personal/961941_rfi_it/Documents/File%20chat%20di%20Microsoft%20Copilot/RelazioneDinamica.pdf)
-
+- `stops_bus73.csv`: two columns `[stop_id, s_m]` with cumulative distance of each stop (m).
+- `curves_bus73.csv`: columns `[start_m, end_m, radius_m, clothoid_m]` (e.g., clothoid = 10 m).
 ### `metro-m4/data/`
-- `stops_m4.csv`: `[station_id, s_m]` (0 … 14198 m).  [1](https://gruppofsitaliane-my.sharepoint.com/personal/961941_rfi_it/Documents/File%20chat%20di%20Microsoft%20Copilot/RelazioneDinamica.pdf)  
-- `curves_m4.csv`: `[start_m, end_m, radius_m, clothoid_m]` (e.g., 50 m).  [1](https://gruppofsitaliane-my.sharepoint.com/personal/961941_rfi_it/Documents/File%20chat%20di%20Microsoft%20Copilot/RelazioneDinamica.pdf)  
-- `slope_profile.csv`: piecewise slope between stations (±5‰ if not available).  [1](https://gruppofsitaliane-my.sharepoint.com/personal/961941_rfi_it/Documents/File%20chat%20di%20Microsoft%20Copilot/RelazioneDinamica.pdf)  
-- `cant_profile.csv`: cant (mm) along track; speed limits computed from `H[mm] = 11.798 * v[km/h]^2 / R[m]` ⇒ `v = 4.68 * sqrt(R)` (capped at 80 km/h).  [1](https://gruppofsitaliane-my.sharepoint.com/personal/961941_rfi_it/Documents/File%20chat%20di%20Microsoft%20Copilot/RelazioneDinamica.pdf)
+- `stops_m4.csv`: `[station_id, s_m]` (0 … 14198 m).
+- `curves_m4.csv`: `[start_m, end_m, radius_m, clothoid_m]` (e.g., 50 m).
+- `slope_profile.csv`: piecewise slope between stations (±5‰ if not available).
+- `cant_profile.csv`: cant (mm) along track; speed limits computed from `H[mm] = 11.798 * v[km/h]^2 / R[m]` ⇒ `v = 4.68 * sqrt(R)` (capped at 80 km/h).
 
-> You can digitize positions/radii from OpenStreetMap/Overpass Turbo and measure with Google Earth Pro, as done in the report.  [1](https://gruppofsitaliane-my.sharepoint.com/personal/961941_rfi_it/Documents/File%20chat%20di%20Microsoft%20Copilot/RelazioneDinamica.pdf)
+> You can digitize positions/radii from OpenStreetMap/Overpass Turbo and measure with Google Earth Pro, as done in the report.
 
 ---
 
@@ -91,16 +89,16 @@ Outputs: scope plots or logged signals for Space/Speed/Acceleration, Tractive & 
 
 ## Modeling notes
 
-Bus dynamic selection: min{motor limit, comfort (a≈0.8 m/s²), adhesion} → operation mode via state chart (traction/free/brake/stop).
-HEV control (bus): TCS toggles generator based on SOC bounds; ICE off < 20 km/h; regen ~30% during braking.
-Metro speed limits from cant with linear ramp 3 mm/m; adhesion speed dependence; resistances per rail empirical formulas.
-Lateral dynamics (metro) computes non‑compensated acceleration, roll angle, and lateral offset given curvature, cant, and speed.
+- Bus dynamic selection: min{motor limit, comfort (a≈0.8 m/s²), adhesion} → operation mode via state chart (traction/free/brake/stop).
+- HEV control (bus): TCS toggles generator based on SOC bounds; ICE off < 20 km/h; regen ~30% during braking.
+- Metro speed limits from cant with linear ramp 3 mm/m; adhesion speed dependence; resistances per rail empirical formulas.
+- Lateral dynamics (metro) computes non‑compensated acceleration, roll angle, and lateral offset given curvature, cant, and speed.
 
 
 ## Validation (examples from report)
 
-Bus: simulated speed/space/acceleration profiles compared to real on-board sensor data on the same route.
-Metro: simulated speed, energy, adhesion margin, and lateral response along M4 reference path.
+- Bus: simulated speed/space/acceleration profiles compared to real on-board sensor data on the same route.
+- Metro: simulated speed, energy, adhesion margin, and lateral response along M4 reference path.
 
 ## License
 Released under the MIT License. See LICENSE.
